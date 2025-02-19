@@ -1,17 +1,16 @@
 import type { ComponentProps, ReactNode } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-interface IconButtonProps extends ComponentProps<'button'> {
-  children: ReactNode
-  text?: string
-}
+interface IconButtonProps extends ComponentProps<'button'> {}
 
-export function IconButton({ children, ...props }: IconButtonProps) {
+export function IconButton({ className, ...props }: IconButtonProps) {
   return (
     <button
-      className="p-1.5 bg-gray-500 text-blue font-semibold rounded-md cursor-pointer hover:bg-blue transition-colors hover:text-gray-900"
+      className={twMerge(
+        'p-1.5 bg-gray-500 text-blue font-semibold rounded-md cursor-pointer hover:bg-blue transition-colors hover:text-gray-900',
+        className
+      )}
       {...props}
-    >
-      {children}
-    </button>
+    />
   )
 }
